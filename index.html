@@ -1,0 +1,57 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ITI Govt Jobs Portal</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Background -->
+  <div class="bg-image">
+    <span></span><span></span><span></span>
+    <span></span><span></span><span></span>
+  </div>
+
+  <!-- Form Container -->
+  <div class="form-container">
+    <form id="mainForm">
+
+      <!-- Name Input -->
+      <div class="form-group">
+        <label for="name"><b>Name:</b></label>
+        <input type="text" id="name" name="username" required>
+      </div>
+
+      <!-- Qualification -->
+      <fieldset>
+        <legend><b>Qualification:</b></legend>
+
+        <div class="radio-group">
+          <label><input type="radio" name="qualification" value="10th" required> 10th</label>
+          <label><input type="radio" name="qualification" value="INTER"> INTER</label>
+          <label><input type="radio" name="qualification" value="DIPLOMA"> DIPLOMA</label>
+          <label><input type="radio" name="qualification" value="ITI"> ITI</label>
+          <label><input type="radio" name="qualification" value="DEGREE"> DEGREE</label>
+          <label><input type="radio" name="qualification" value="BTECH"> BTECH</label>
+          <label><input type="radio" name="qualification" value="MTECH"> MTECH</label>
+          <label><input type="radio" name="qualification" value="MBA"> MBA</label>
+        </div>
+      </fieldset>
+
+      <!-- Buttons -->
+      <div class="button-group">
+        <input type="submit" value="Submit">
+        <input type="reset" value="Cancel">
+      </div>
+
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

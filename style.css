@@ -1,0 +1,131 @@
+/* ===== Background Gradient ===== */
+.bg-image { 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1, #fda085, #f6d365, #84fab0, #8fd3f4);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  z-index: -1;
+}
+
+/* Floating circles */
+.bg-image span {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.3);
+  bottom: -150px;
+  border-radius: 50%;
+  animation: floatUp 20s linear infinite;
+}
+
+/* Variations */
+.bg-image span:nth-child(1) { left: 20%; width: 80px; height: 80px; background: rgba(255, 99, 132, 0.6); }
+.bg-image span:nth-child(2) { left: 50%; background: rgba(54, 162, 235, 0.6); animation-delay: 4s; }
+.bg-image span:nth-child(3) { left: 70%; width: 100px; height: 100px; background: rgba(255, 206, 86, 0.6); animation-delay: 8s; }
+.bg-image span:nth-child(4) { left: 40%; width: 60px; height: 60px; background: rgba(75, 192, 192, 0.6); animation-delay: 2s; }
+.bg-image span:nth-child(5) { left: 10%; background: rgba(153, 102, 255, 0.6); animation-delay: 6s; }
+.bg-image span:nth-child(6) { left: 85%; width: 120px; height: 120px; background: rgba(255, 159, 64, 0.6); animation-delay: 10s; }
+
+/* Animations */
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ===== Form Container ===== */
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* ===== Form Styling (NO blur, but modern look) ===== */
+#mainForm {
+  width: 300px;
+  padding: 20px;
+  border-radius: 15px;
+
+  /* Soft glass-like effect without blur */
+  background: rgba(255, 255, 255, 0.9);
+
+  /* Border glow effect */
+  border: 1px solid rgba(255, 255, 255, 0.6);
+
+  /* Shadow for depth */
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+
+  /* Smooth transition */
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Hover effect */
+#mainForm:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+}
+
+/* Inputs */
+.form-group {
+  margin-bottom: 15px;
+}
+
+
+input[type="text"] {
+  width: 85%;   /* reduced from 100% */
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+/* Radio */
+.radio-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Buttons */
+.button-group {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+input[type="submit"],
+input[type="reset"] {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Button styles */
+input[type="submit"] {
+  background: #28a745;
+  color: white;
+}
+
+input[type="reset"] {
+  background: #dc3545;
+  color: white;
+}
+
+/* Hover effects */
+input[type="submit"]:hover {
+  background: #218838;
+}
+
+input[type="reset"]:hover {
+  background: #c82333;
+}

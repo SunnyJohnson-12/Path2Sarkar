@@ -1,0 +1,210 @@
+
+
+
+
+
+
+
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* Body with 3D gradient background */
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+  background-size: 400% 400%;
+  animation: gradientMove 12s ease infinite;
+  perspective: 1000px;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Animated gradient */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Floating 3D shapes */
+body::before,
+body::after {
+  content: "";
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle at top left,
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.05)
+  );
+  filter: blur(2px);
+  animation: float3d 14s infinite ease-in-out;
+  transform-style: preserve-3d;
+
+  /* 🔥 FIX: Prevent blocking clicks */
+  pointer-events: none;
+}
+
+body::before {
+  top: 8%;
+  left: 6%;
+}
+
+body::after {
+  bottom: 10%;
+  right: 8%;
+  animation-duration: 18s;
+}
+
+/* 3D floating animation */
+@keyframes float3d {
+  0% {
+    transform: translateY(0) translateZ(0) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    transform: translateY(-60px) translateZ(120px) rotateX(25deg) rotateY(25deg);
+  }
+  100% {
+    transform: translateY(0) translateZ(0) rotateX(0deg) rotateY(0deg);
+  }
+}
+
+/* Main card */
+.todo-container {
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 16px;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    inset 0 0 25px rgba(255, 255, 255, 0.4);
+
+  position: relative;
+  z-index: 1; /* 🔥 Ensure above background */
+
+  transform-style: preserve-3d;
+  animation: cardPop 1.2s ease;
+}
+
+/* Card entry animation */
+@keyframes cardPop {
+  from {
+    opacity: 0;
+    transform: translateY(40px) rotateX(10deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}
+
+/* Glowing orbs */
+.todo-container::before,
+.todo-container::after {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(0, 255, 255, 0.6),
+    rgba(0, 255, 255, 0.1)
+  );
+  filter: blur(12px);
+  animation: orbFloat 10s infinite alternate;
+  z-index: -1;
+
+  pointer-events: none; /* 🔥 safety */
+}
+
+.todo-container::before {
+  top: -70px;
+  right: -70px;
+}
+
+.todo-container::after {
+  bottom: -70px;
+  left: -70px;
+  background: radial-gradient(circle,
+    rgba(255, 0, 255, 0.6),
+    rgba(255, 0, 255, 0.1)
+  );
+  animation-duration: 14s;
+}
+
+@keyframes orbFloat {
+  from {
+    transform: translateY(0) translateX(0);
+  }
+  to {
+    transform: translateY(-40px) translateX(40px);
+  }
+}
+
+/* Heading */
+.todo-container h2 {
+  margin-bottom: 15px;
+  color: #1a2a6c;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+caption {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+/* Table cells */
+th,
+td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+/* Table header */
+th {
+  background: linear-gradient(135deg, #1a2a6c, #b21f1f);
+  color: #fff;
+}
+
+/* Row hover 3D */
+tbody tr {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+tbody tr:hover {
+  transform: translateZ(15px) scale(1.01);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* Alternate rows */
+tr:nth-child(even) {
+  background: #f4f7fb;
+}
+
+/* Links */
+a {
+  color: #1a73e8;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,191 @@
+
+
+
+
+
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* Body – calm animated gradient */
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e8edf3, #cfd9df, #e2ebf0);
+  background-size: 300% 300%;
+  animation: softGradient 14s ease infinite;
+  perspective: 900px;
+  overflow-x: hidden;
+  position: relative;
+}
+
+@keyframes softGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Soft floating background shapes */
+body::before,
+body::after {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.15)
+  );
+  filter: blur(4px);
+  animation: floatSoft 18s infinite ease-in-out;
+
+  /* 🔥 FIX: prevent blocking clicks */
+  pointer-events: none;
+}
+
+body::before {
+  top: 10%;
+  left: 8%;
+}
+
+body::after {
+  bottom: 12%;
+  right: 10%;
+  animation-duration: 22s;
+}
+
+@keyframes floatSoft {
+  0% { transform: translateY(0) translateZ(0); }
+  50% { transform: translateY(-35px) translateZ(60px); }
+  100% { transform: translateY(0) translateZ(0); }
+}
+
+/* Main content card */
+.todo-container {
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 14px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
+
+  position: relative;
+  z-index: 1; /* 🔥 ensures above floating layers */
+
+  transform-style: preserve-3d;
+  animation: fadeUp 1s ease;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Decorative orbs */
+.todo-container::before,
+.todo-container::after {
+  content: "";
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(180, 200, 220, 0.45),
+    rgba(180, 200, 220, 0.1)
+  );
+  filter: blur(14px);
+  animation: orbMove 16s infinite alternate;
+  z-index: -1;
+
+  pointer-events: none; /* 🔥 safety */
+}
+
+.todo-container::before {
+  top: -60px;
+  right: -60px;
+}
+
+.todo-container::after {
+  bottom: -60px;
+  left: -60px;
+  animation-duration: 20s;
+}
+
+@keyframes orbMove {
+  from { transform: translate(0, 0); }
+  to { transform: translate(30px, -30px); }
+}
+
+/* Heading */
+.todo-container h2 {
+  margin-bottom: 15px;
+  color: #2f3e46;
+  font-weight: 600;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+}
+
+caption {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+/* Table cells */
+th,
+td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #dde3ea;
+  color: #333;
+}
+
+/* Table header */
+th {
+  background: linear-gradient(135deg, #4a6fa5, #3b5b7a);
+  color: #ffffff;
+  font-weight: 500;
+}
+
+/* Rows */
+tr:nth-child(even) {
+  background: #f6f8fa;
+}
+
+/* Hover effect */
+tbody tr {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+tbody tr:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+/* Links */
+a {
+  color: #355f8c;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
